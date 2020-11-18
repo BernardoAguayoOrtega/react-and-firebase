@@ -1,17 +1,25 @@
 import React from 'react';
 import Header from './Header';
 import './App.css';
-import './firebase/config'
+import './firebase/config';
+import Signup from './pages/Signup';
+import { Route, Switch, BrowserRouter } from 'react-router-dom';
 
 function App() {
-  return (
-    <div>
-      <Header></Header>
-      <div className="app">
-        <div className="ui grid container"></div>
-      </div>
-    </div>
-  );
+	return (
+		<BrowserRouter>
+			<Header></Header>
+			<div className='app'>
+				<div className='ui grid container'>
+					<Switch>
+						<Route exact path='/signup'>
+							<Signup />
+						</Route>
+					</Switch>
+				</div>
+			</div>
+		</BrowserRouter>
+	);
 }
 
 export default App;

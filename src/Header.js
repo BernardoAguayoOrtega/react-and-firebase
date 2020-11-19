@@ -1,5 +1,5 @@
 import React from 'react';
-import { logOut } from './firebase/auth';
+import { logout } from './firebase/auth';
 import { useHistory } from 'react-router-dom';
 import { useSession } from './firebase/UserProvider';
 
@@ -10,8 +10,8 @@ function Header() {
 	console.log(user);
 
 	const logoutUser = async () => {
-		await logOut();
-		history.push('/signup');
+		await logout();
+		history.push('/login');
 	};
 
 	return (

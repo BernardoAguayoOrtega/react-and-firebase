@@ -5,6 +5,7 @@ import './firebase/config';
 import './pages/Signup';
 import { Route, Switch, BrowserRouter } from 'react-router-dom';
 import Signup from './pages/Signup';
+import Login from './pages/Login';
 import { UserProvider } from './firebase/UserProvider';
 import Profile from './pages/Profile';
 
@@ -16,6 +17,7 @@ function App() {
 				<div className='app'>
 					<div className='ui grid container'>
 						<Switch>
+							<Route exact path='/login' component={Login} />
 							<Route exact path='/signup' component={Signup} />
 							<Route exact path='/profile/:id' component={Profile} />
 						</Switch>

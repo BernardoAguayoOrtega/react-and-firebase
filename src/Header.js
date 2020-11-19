@@ -7,8 +7,6 @@ function Header() {
 	const { user } = useSession();
 	const history = useHistory();
 
-	console.log(user);
-
 	const logoutUser = async () => {
 		await logout();
 		history.push('/login');

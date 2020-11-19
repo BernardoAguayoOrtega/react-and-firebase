@@ -6,5 +6,9 @@ export const signup = async ({ firstName, lastName, email, password }) => {
 		.auth()
 		.createUserWithEmailAndPassword(email, password);
 
-	await resp.user.updateProfile({ displayName: `${firstName} ${lastName}` });
+	const user = resp.user;
+
+	await user.updateProfile({ displayName: `${firstName} ${lastName}` });
+
+	return user;
 };

@@ -1,10 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSession } from '../firebase/UserProvider';
+import { firestore } from '../firebase/config';
 
 const Profile = () => {
 	const { user } = useSession();
+	const [userDocument, setUserDocument] = useState(undefined);
 
-  if (!user) return null;
+	console.log(userDocument);
+
+	useEffect(() => {
+		const docRef = firestore.collection('users').doc(user.uid);
+
+		const unsubscribe = docRef.onSnapshot((document) => {
+			if (document.exists) {
+				setUserDocument(document.data());
+			}
+		});
+
+		return unsubscribe;
+	}, [user.uid]);
+
+	if (!userDocument) return null;
 
 	return (
 		<div>
@@ -15,4 +31,4 @@ const Profile = () => {
 	);
 };
 
-export default Profile
+export default Profile;
